@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🤖 프롬프트 엔지니어링 가이드북</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- 헤더 네비게이션 -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">🤖 <span>프롬프트 가이드북</span></div>
+      <nav class="nav">
+        <a href="#what-is-prompt">프롬프트란?</a>
+        <a href="#four-elements">4대 요소</a>
+        <a href="#five-skills">5가지 기술</a>
+        <a href="#six-rules">6대 원칙</a>
+        <a href="#practice">실습</a>
+      </nav>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#what-is-prompt">프롬프트란?</a>
+      <a href="#four-elements">4대 요소</a>
+      <a href="#five-skills">5가지 기술</a>
+      <a href="#six-rules">6대 원칙</a>
+      <a href="#practice">실습</a>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🎓 중학생도 OK! 쉽게 배우는</div>
+      <h1 class="hero-title">
+        프롬프트 엔지니어링<br />
+        <span class="highlight">완전 정복 가이드북</span>
+      </h1>
+      <p class="hero-desc">
+        AI에게 똑똑하게 말 거는 방법을 알면,<br />
+        AI가 내 최고의 공부 친구가 됩니다! 🚀
+      </p>
+      <div class="hero-btns">
+        <a href="#what-is-prompt" class="btn-primary">지금 시작하기 →</a>
+        <a href="#practice" class="btn-secondary">바로 실습하기</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">핵심 요소</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">활용 기술</span></div>
+        <div class="stat"><span class="stat-num">6</span><span class="stat-label">황금 원칙</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">실습 과제</span></div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="chat-bubble-wrap">
+        <div class="chat-bubble user">안녕! 내 숙제 도와줘 🙋</div>
+        <div class="chat-bubble ai">물론이죠! 어떤 과목인가요? 😊<br><small>어떻게 설명해 드릴까요?</small></div>
+        <div class="chat-bubble user">수학 방정식, 초등학생이 이해할 수 있게 설명해줘!</div>
+        <div class="chat-bubble ai">좋아요! 쉬운 말로 설명해 드릴게요 ✨<br><small>방정식은 마치 저울처럼...</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 1: 프롬프트란? -->
+  <section class="section" id="what-is-prompt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">📖 기초 개념</span>
+        <h2>프롬프트가 뭔가요?</h2>
+        <p>AI에게 보내는 '지시문'이에요. 잘 만들수록 더 좋은 답이 나와요!</p>
+      </div>
+
+      <div class="analogy-box">
+        <div class="analogy-icon">🏗️</div>
+        <div class="analogy-content">
+          <h3>비유로 이해하기</h3>
+          <p>
+            프롬프트는 <strong>건물을 짓는 설계도</strong>와 같아요!<br />
+            설계도가 엉터리면 엉터리 건물이 지어지듯,<br />
+            프롬프트가 엉터리면 AI도 엉터리 답을 줘요.
+          </p>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <div class="compare-icon">😞</div>
+          <h3>나쁜 프롬프트</h3>
+          <div class="prompt-example bad-ex">
+            "여행 알려줘"
+          </div>
+          <p>너무 막연해서 AI가 뭘 원하는지 몰라요!</p>
+          <ul class="result-list">
+            <li>❌ 어디로 여행? 국내? 해외?</li>
+            <li>❌ 며칠짜리? 예산은?</li>
+            <li>❌ 누구랑? 어떤 스타일?</li>
+          </ul>
+        </div>
+        <div class="compare-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="compare-card good">
+          <div class="compare-icon">😄</div>
+          <h3>좋은 프롬프트</h3>
+          <div class="prompt-example good-ex">
+            "나는 고등학생이야. 친구 3명과 부산으로 1박 2일 여행을 가려고 해. 총 예산 20만원으로 맛집, 관광지, 숙소를 포함한 알찬 일정표를 표 형식으로 만들어줘."
+          </div>
+          <p>구체적인 정보를 주니 AI가 딱 맞는 답을 줄 수 있어요!</p>
+          <ul class="result-list">
+            <li>✅ 대상: 고등학생 친구 4명</li>
+            <li>✅ 조건: 부산, 1박 2일, 20만원</li>
+            <li>✅ 형식: 표 형식 일정표</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-callout">
+        <div class="callout-icon">💡</div>
+        <div class="callout-text">
+          <strong>핵심 포인트!</strong> 같은 AI에게 같은 주제로 물어봐도, 프롬프트를 어떻게 쓰느냐에 따라 답변의 질이 완전히 달라져요. 프롬프트 = AI 사용 능력이에요!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 2: 4대 핵심 요소 -->
+  <section class="section section-alt" id="four-elements">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🧩 핵심 요소</span>
+        <h2>프롬프트 4대 요소</h2>
+        <p>이 4가지만 기억하면 AI와 대화가 훨씬 쉬워져요!</p>
+      </div>
+
+      <div class="elements-grid">
+
+        <!-- 페르소나 -->
+        <div class="element-card" data-color="purple">
+          <div class="element-num">1</div>
+          <div class="element-icon">🎭</div>
+          <h3>페르소나 <small>(Persona)</small></h3>
+          <p class="element-sub">AI에게 <strong>'역할'</strong>을 정해줘요</p>
+          <div class="element-desc">
+            AI에게 어떤 캐릭터를 연기할지 알려주는 거예요. 역할에 따라 말투, 전문성, 답변 스타일이 달라져요!
+          </div>
+          <div class="element-examples">
+            <div class="ex-title">💬 예시</div>
+            <div class="ex-item">"너는 친절한 수학 선생님이야"</div>
+            <div class="ex-item">"너는 10년 경력의 요리사야"</div>
+            <div class="ex-item">"전교 1등 형이 동생에게 비법 전수하듯 알려줘"</div>
+          </div>
+        </div>
+
+        <!-- 작업 -->
+        <div class="element-card" data-color="blue">
+          <div class="element-num">2</div>
+          <div class="element-icon">📋</div>
+          <h3>작업 <small>(Task)</small></h3>
+          <p class="element-sub">AI에게 <strong>'심부름'</strong>을 시켜요</p>
+          <div class="element-desc">
+            AI에게 구체적으로 무엇을 해달라고 시키는 거예요. "~해줘", "~만들어줘", "~설명해줘" 처럼 명령어를 포함해요!
+          </div>
+          <div class="element-examples">
+            <div class="ex-title">💬 예시</div>
+            <div class="ex-item">"요약해줘"</div>
+            <div class="ex-item">"3가지 방법으로 설명해줘"</div>
+            <div class="ex-item">"장단점을 비교해줘"</div>
+          </div>
+        </div>
+
+        <!-- 맥락 -->
+        <div class="element-card" data-color="green">
+          <div class="element-num">3</div>
+          <div class="element-icon">🗺️</div>
+          <h3>맥락 <small>(Context)</small></h3>
+          <p class="element-sub">AI에게 <strong>'상황'</strong>을 설명해요</p>
+          <div class="element-desc">
+            AI가 내 상황을 모르면 엉뚱한 답을 줄 수 있어요. 관련 배경 정보나 조건을 꼭 알려줘요!
+          </div>
+          <div class="element-examples">
+            <div class="ex-title">💬 예시</div>
+            <div class="ex-item">"나는 중학교 2학년 학생이야"</div>
+            <div class="ex-item">"내일이 발표인데 긴장되어"</div>
+            <div class="ex-item">"친구와 싸워서 화해하고 싶어"</div>
+          </div>
+        </div>
+
+        <!-- 형식 -->
+        <div class="element-card" data-color="orange">
+          <div class="element-num">4</div>
+          <div class="element-icon">📐</div>
+          <h3>형식 <small>(Format)</small></h3>
+          <p class="element-sub">답변의 <strong>'모양'</strong>을 정해요</p>
+          <div class="element-desc">
+            AI가 어떤 형태로 답변을 줄지 미리 정해줘요. 표, 목록, 단계별 설명 등 원하는 형식을 요청할 수 있어요!
+          </div>
+          <div class="element-examples">
+            <div class="ex-title">💬 예시</div>
+            <div class="ex-item">"표로 만들어줘"</div>
+            <div class="ex-item">"3단계로 나눠서 설명해줘"</div>
+            <div class="ex-item">"500자 이내로 짧게 써줘"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4요소 통합 예시 -->
+      <div class="integrated-example">
+        <h3>🔥 4요소를 합쳐보면?</h3>
+        <div class="integrated-grid">
+          <div class="int-piece purple-bg">
+            <span class="int-label">🎭 페르소나</span>
+            <span class="int-text">너는 친절한 영어 과외 선생님이야.</span>
+          </div>
+          <div class="int-plus">+</div>
+          <div class="int-piece blue-bg">
+            <span class="int-label">📋 작업</span>
+            <span class="int-text">현재분사와 과거분사의 차이를 알려줘.</span>
+          </div>
+          <div class="int-plus">+</div>
+          <div class="int-piece green-bg">
+            <span class="int-label">🗺️ 맥락</span>
+            <span class="int-text">나는 중학교 2학년인데 영어가 약해.</span>
+          </div>
+          <div class="int-plus">+</div>
+          <div class="int-piece orange-bg">
+            <span class="int-label">📐 형식</span>
+            <span class="int-text">비교 표와 예문 3개씩 포함해서.</span>
+          </div>
+        </div>
+        <div class="int-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="int-result">
+          <div class="result-label">✨ 완성된 프롬프트</div>
+          <div class="result-text">
+            "너는 친절한 영어 과외 선생님이야. 나는 중학교 2학년인데 영어가 약해. 현재분사와 과거분사의 차이를 비교 표와 예문 3개씩 포함해서 쉽게 설명해줘."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 3: 5가지 활용 기술 (제미나이 편) -->
+  <section class="section" id="five-skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">⚡ 활용 기술</span>
+        <h2>AI를 200% 활용하는 5가지 기술</h2>
+        <p>이것만 알면 AI를 나만의 스마트 비서로 만들 수 있어요!</p>
+      </div>
+
+      <div class="skills-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="skill1">1️⃣ 자기소개</button>
+          <button class="tab-btn" data-tab="skill2">2️⃣ 역할 부여</button>
+          <button class="tab-btn" data-tab="skill3">3️⃣ 질문의 질문</button>
+          <button class="tab-btn" data-tab="skill4">4️⃣ 꼬리 질문</button>
+          <button class="tab-btn" data-tab="skill5">5️⃣ 예시 활용</button>
+        </div>
+
+        <div class="tab-contents">
+
+          <!-- 기술 1: 자기소개 (개인 맞춤 설정) -->
+          <div class="tab-content active" id="skill1">
+            <div class="skill-layout">
+              <div class="skill-info">
+                <div class="skill-badge">기술 1</div>
+                <h3>나를 소개하기 (개인 맞춤 설정)</h3>
+                <p class="skill-lead">AI가 나를 모르면 엉뚱한 답을 줘요.<br />내 정보를 미리 알려주세요!</p>
+                <div class="skill-why">
+                  <div class="why-icon">🤔</div>
+                  <div class="why-text">
+                    <strong>왜 필요할까요?</strong><br />
+                    AI는 처음 만난 사람이에요. 내가 누구인지, 무엇을 좋아하는지 알아야 딱 맞는 답을 줄 수 있어요!
+                  </div>
+                </div>
+                <div class="skill-steps">
+                  <div class="step">
+                    <span class="step-num">01</span>
+                    <span class="step-text">AI 설정 메뉴에서 '맞춤 설정' 찾기</span>
+                  </div>
+                  <div class="step">
+                    <span class="step-num">02</span>
+                    <span class="step-text">나이, 직업/학년, 관심사 입력하기</span>
+                  </div>
+                  <div class="step">
+                    <span class="step-num">03</span>
+                    <span class="step-text">원하는 말투 스타일 설정하기</span>
+                  </div>
+                </div>
+              </div>
+              <div class="skill-example">
+                <div class="example-title">📝 설정 예시 비교</div>
+                <div class="example-compare">
+                  <div class="ex-col">
+                    <div class="ex-col-header" style="background:#e0e7ff">👩‍🎓 학생용</div>
+                    <div class="ex-col-body">
+                      <div class="setting-item">• 중학교 2학년</div>
+                      <div class="setting-item">• 수학, 영어 약함</div>
+                      <div class="setting-item">• 게임과 음악 좋아함</div>
+                      <div class="setting-item">• 쉽고 재미있게 설명 선호</div>
+                      <div class="setting-item">• 예시를 많이 들어줬으면 함</div>
+                    </div>
+                  </div>
+                  <div class="ex-col">
+                    <div class="ex-col-header" style="background:#d1fae5">👔 직장인용</div>
+                    <div class="ex-col-body">
+                      <div class="setting-item">• 마케터, 5년 경력</div>
+                      <div class="setting-item">• SNS 마케팅 전문</div>
+                      <div class="setting-item">• 간결한 답변 선호</div>
+                      <div class="setting-item">• 전문 용어 사용 OK</div>
+                      <div class="setting-item">• 실무 예시 위주로</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 기술 2: 역할 부여 -->
+          <div class="tab-content" id="skill2">
+            <div class="skill-layout">
+              <div class="skill-info">
+                <div class="skill-badge">기술 2</div>
+                <h3>AI에게 역할 정해주기</h3>
+                <p class="skill-lead">AI는 연기를 잘해요!<br />역할을 정해주면 훨씬 전문적으로 답해요.</p>
+                <div class="skill-why">
+                  <div class="why-icon">🎭</div>
+                  <div class="why-text">
+                    <strong>왜 효과적일까요?</strong><br />
+                    같은 질문이라도 '선생님 역할'과 '친구 역할'로 받은 AI의 답변은 완전히 달라요. 상황에 맞는 역할을 지정해 보세요!
+                  </div>
+                </div>
+              </div>
+              <div class="skill-example">
+                <div class="example-title">📝 역할별 답변 비교</div>
+                <div class="role-cards">
+                  <div class="role-card">
+                    <div class="role-name">👩‍🏫 선생님 역할</div>
+                    <div class="role-prompt">"너는 중학교 과학 선생님이야. 광합성을 쉽게 설명해줘."</div>
+                    <div class="role-result">→ 체계적, 교과서적, 예시 포함</div>
+                  </div>
+                  <div class="role-card">
+                    <div class="role-name">👫 친구 역할</div>
+                    <div class="role-prompt">"너는 나의 친한 친구야. 광합성이 뭔지 쉽게 말해줘."</div>
+                    <div class="role-result">→ 편한 말투, 재미있게, 간단히</div>
+                  </div>
+                  <div class="role-card">
+                    <div class="role-name">🔬 과학자 역할</div>
+                    <div class="role-prompt">"너는 식물 연구 전문가야. 광합성의 화학 반응을 설명해줘."</div>
+                    <div class="role-result">→ 전문 용어, 깊은 내용, 학술적</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 기술 3: 질문의 질문 -->
+          <div class="tab-content" id="skill3">
+            <div class="skill-layout">
+              <div class="skill-info">
+                <div class="skill-badge">기술 3</div>
+                <h3>질문을 질문하기</h3>
+                <p class="skill-lead">뭘 물어봐야 할지 모를 때,<br />AI에게 물어봐야 할 것을 물어보세요!</p>
+                <div class="skill-why">
+                  <div class="why-icon">❓</div>
+                  <div class="why-text">
+                    <strong>이럴 때 써보세요!</strong><br />
+                    처음 해보는 것이라 어떻게 질문해야 좋은지 모를 때! AI가 좋은 질문 방법을 가르쳐 줄 거예요.
+                  </div>
+                </div>
+              </div>
+              <div class="skill-example">
+                <div class="example-title">📝 이렇게 활용해요</div>
+                <div class="meta-examples">
+                  <div class="meta-ex">
+                    <div class="meta-q">❓ 이렇게 물어보세요</div>
+                    <div class="meta-text">"나는 학교 발표를 잘 하고 싶어. 이 주제로 AI에게 어떻게 질문하면 가장 좋은 도움을 받을 수 있어?"</div>
+                  </div>
+                  <div class="meta-arrow">↓ AI가 좋은 질문 방법을 알려줌!</div>
+                  <div class="meta-ex result">
+                    <div class="meta-q">✅ AI가 추천해준 질문 방법</div>
+                    <div class="meta-text">"발표 주제, 청중(누구에게), 발표 시간, 어려운 점을 포함해서 물어보면 좋아요!"</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 기술 4: 꼬리 질문 -->
+          <div class="tab-content" id="skill4">
+            <div class="skill-layout">
+              <div class="skill-info">
+                <div class="skill-badge">기술 4</div>
+                <h3>꼬리에 꼬리를 무는 대화</h3>
+                <p class="skill-lead">한 번에 완벽한 답을 기대하지 말고,<br />대화를 이어가며 완성해가세요!</p>
+                <div class="skill-why">
+                  <div class="why-icon">🔗</div>
+                  <div class="why-text">
+                    <strong>대화를 끊지 마세요!</strong><br />
+                    AI와의 대화는 이전 내용을 기억해요. 부족한 점을 계속 덧붙이며 점점 더 좋은 답을 만들어가세요!
+                  </div>
+                </div>
+                <div class="follow-up-tips">
+                  <div class="tip-item"><span>📌</span> "더 자세히 설명해줘"</div>
+                  <div class="tip-item"><span>📌</span> "더 쉽게 설명해줘"</div>
+                  <div class="tip-item"><span>📌</span> "예시를 3개 더 들어줘"</div>
+                  <div class="tip-item"><span>📌</span> "이 부분은 좀 짧게 줄여줘"</div>
+                  <div class="tip-item"><span>📌</span> "표로 정리해줘"</div>
+                </div>
+              </div>
+              <div class="skill-example">
+                <div class="example-title">📝 꼬리 대화 예시</div>
+                <div class="conversation">
+                  <div class="conv-msg user-msg">🙋 "독도에 대해 알려줘"</div>
+                  <div class="conv-msg ai-msg">🤖 (독도의 일반 정보 제공)</div>
+                  <div class="conv-msg user-msg">🙋 "독도 분쟁이 왜 생겼는지 더 자세히 알려줘"</div>
+                  <div class="conv-msg ai-msg">🤖 (역사적 배경 자세히 설명)</div>
+                  <div class="conv-msg user-msg">🙋 "이걸 발표 자료로 써야 해. 3분짜리 발표 대본으로 만들어줘"</div>
+                  <div class="conv-msg ai-msg">🤖 ✨ (완벽한 발표 대본 완성!)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 기술 5: 예시 활용 -->
+          <div class="tab-content" id="skill5">
+            <div class="skill-layout">
+              <div class="skill-info">
+                <div class="skill-badge">기술 5</div>
+                <h3>예시를 보여주며 질문하기</h3>
+                <p class="skill-lead">말로 설명하기 어려울 땐,<br />직접 예시를 보여주세요!</p>
+                <div class="skill-why">
+                  <div class="why-icon">💡</div>
+                  <div class="why-text">
+                    <strong>예시가 최고예요!</strong><br />
+                    "이런 느낌으로 해줘"라고 예시를 보여주면 AI가 훨씬 정확하게 이해해요. 특히 말투나 형식을 원할 때 좋아요!
+                  </div>
+                </div>
+              </div>
+              <div class="skill-example">
+                <div class="example-title">📝 예시 활용법</div>
+                <div class="few-shot-example">
+                  <div class="fse-label">✏️ 이런 방식으로 사용해요</div>
+                  <div class="fse-prompt">
+                    <p>"아래 예시처럼 재미있고 친근한 말투로 과학 용어를 설명해줘.</p>
+                    <p>[예시] 관성 = 움직이는 버스가 갑자기 멈출 때 몸이 앞으로 쏠리는 그 느낌!</p>
+                    <p>이제 '중력'을 같은 방식으로 설명해줘."</p>
+                  </div>
+                  <div class="fse-result">
+                    <div class="fse-result-label">✅ AI 답변</div>
+                    <div class="fse-result-text">중력 = 점프하고 나면 땅으로 다시 떨어지게 만드는 보이지 않는 힘! 지구가 모든 걸 자기 쪽으로 끌어당기는 마법이야! 🌍</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 4: 6대 원칙 -->
+  <section class="section section-alt" id="six-rules">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">📜 황금 원칙</span>
+        <h2>프롬프트 6대 황금 원칙</h2>
+        <p>이 원칙을 지키면 AI와의 대화가 10배 좋아져요!</p>
+      </div>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-num">01</div>
+          <div class="rule-icon">💬</div>
+          <h3>자연스럽게 말하기</h3>
+          <p>검색어처럼 단어만 쓰지 말고, 친구에게 말하듯 자연스럽게 문장으로 써요.</p>
+          <div class="rule-example">
+            <span class="bad-label">❌</span> "중력 설명"<br />
+            <span class="good-label">✅</span> "중력이 뭔지 쉽게 설명해줘"
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">02</div>
+          <div class="rule-icon">🎯</div>
+          <h3>구체적으로 말하기</h3>
+          <p>막연하게 말하지 말고, 원하는 것을 최대한 자세하게 설명해줘요.</p>
+          <div class="rule-example">
+            <span class="bad-label">❌</span> "요약해줘"<br />
+            <span class="good-label">✅</span> "핵심 3가지를 각각 한 줄로 요약해줘"
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">03</div>
+          <div class="rule-icon">✂️</div>
+          <h3>간결하게 쓰기</h3>
+          <p>너무 길고 복잡하게 쓰면 AI도 헷갈려요. 핵심만 명확하게 전달해요.</p>
+          <div class="rule-example">
+            <span class="good-label">✅</span> 필요한 정보만 담아서 깔끔하게!
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">04</div>
+          <div class="rule-icon">🔄</div>
+          <h3>대화처럼 주고받기</h3>
+          <p>한 번에 모든 걸 해결하려 하지 말고, 대화하듯 주고받으며 완성해가요.</p>
+          <div class="rule-example">
+            <span class="good-label">✅</span> "더 자세히 / 다른 방식으로 / 수정해줘"
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">05</div>
+          <div class="rule-icon">👤</div>
+          <h3>나에 대해 알려주기</h3>
+          <p>내가 누구인지, 어떤 상황인지 알려주면 AI가 맞춤 답변을 줄 수 있어요.</p>
+          <div class="rule-example">
+            <span class="good-label">✅</span> "나는 중2이고 수학을 어려워해..."
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">06</div>
+          <div class="rule-icon">🔧</div>
+          <h3>프롬프트 개선 요청하기</h3>
+          <p>AI에게 내 프롬프트를 더 좋게 고쳐달라고 부탁할 수도 있어요!</p>
+          <div class="rule-example">
+            <span class="good-label">✅</span> "내 질문을 더 잘 다듬어줘"
+          </div>
+        </div>
+      </div>
+
+      <!-- 체크리스트 -->
+      <div class="checklist-box">
+        <h3>✅ 프롬프트 작성 전 체크리스트</h3>
+        <p class="checklist-sub">질문하기 전에 이것만 확인해 보세요!</p>
+        <div class="checklist">
+          <label class="check-item">
+            <input type="checkbox" class="check-input" />
+            <span class="check-mark"></span>
+            <span class="check-text">AI에게 어떤 역할을 줄지 생각했나요? (페르소나)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="check-input" />
+            <span class="check-mark"></span>
+            <span class="check-text">정확히 무엇을 해달라고 할지 정했나요? (작업)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="check-input" />
+            <span class="check-mark"></span>
+            <span class="check-text">내 상황이나 조건을 충분히 설명했나요? (맥락)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="check-input" />
+            <span class="check-mark"></span>
+            <span class="check-text">어떤 형태로 답변을 원하는지 말했나요? (형식)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="check-input" />
+            <span class="check-mark"></span>
+            <span class="check-text">질문이 자연스러운 문장으로 되어 있나요?</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="check-input" />
+            <span class="check-mark"></span>
+            <span class="check-text">너무 길거나 복잡하지 않게 정리했나요?</span>
+          </label>
+        </div>
+        <div class="check-result" id="checkResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 5: 실습 과제 -->
+  <section class="section" id="practice">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🏋️ 실습 과제</span>
+        <h2>지금 바로 따라 해보기!</h2>
+        <p>4가지 실습 과제로 프롬프트 실력을 키워보세요!</p>
+      </div>
+
+      <div class="practice-grid">
+
+        <!-- 실습 1 -->
+        <div class="practice-card">
+          <div class="practice-num">실습 1</div>
+          <div class="practice-emoji">🏃</div>
+          <h3>나만의 운동 계획표 만들기</h3>
+          <div class="practice-scenario">
+            <strong>상황:</strong> 학교 체력 검사가 3주 후인데, 달리기를 잘 못해요.
+          </div>
+          <div class="practice-template">
+            <div class="template-label">✏️ 빈칸을 채워서 프롬프트 만들기</div>
+            <div class="template-text">
+              "너는 [<span class="blank">역할</span>]이야. 나는 [<span class="blank">학년/나이</span>] 학생인데 [<span class="blank">목표</span>]를 위해 3주 계획이 필요해. 매일 30분씩 할 수 있는 운동 계획을 [<span class="blank">형식</span>]으로 만들어줘."
+            </div>
+          </div>
+          <div class="practice-sample">
+            <details>
+              <summary>💡 예시 답안 보기</summary>
+              <div class="sample-content">
+                "너는 친절한 체육 코치야. 나는 중학교 2학년 학생인데 3주 후 체력 검사 달리기를 잘 통과하고 싶어. 매일 30분씩 할 수 있는 운동 계획을 요일별 표로 만들어줘. 준비 운동, 본 운동, 마무리 운동을 포함해줘."
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 실습 2 -->
+        <div class="practice-card">
+          <div class="practice-num">실습 2</div>
+          <div class="practice-emoji">✈️</div>
+          <h3>가족 여행 일정 짜기</h3>
+          <div class="practice-scenario">
+            <strong>상황:</strong> 부모님과 함께 제주도 2박 3일 여행을 계획 중이에요.
+          </div>
+          <div class="practice-template">
+            <div class="template-label">✏️ 빈칸을 채워서 프롬프트 만들기</div>
+            <div class="template-text">
+              "우리 가족은 [<span class="blank">구성원</span>]이야. [<span class="blank">여행지</span>]로 [<span class="blank">기간</span>] 여행을 가는데, 우리가 좋아하는 것은 [<span class="blank">관심사</span>]야. [<span class="blank">형식</span>]으로 일정을 짜줘."
+            </div>
+          </div>
+          <div class="practice-sample">
+            <details>
+              <summary>💡 예시 답안 보기</summary>
+              <div class="sample-content">
+                "우리 가족은 부모님과 나(중학생) 이렇게 3명이야. 제주도로 2박 3일 여행을 가는데, 부모님은 맛집과 자연 경관을 좋아하고 나는 체험 활동을 좋아해. 예산은 총 50만원이고, 날짜별 오전/오후/저녁으로 나누어 표 형식으로 일정을 짜줘."
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 실습 3 -->
+        <div class="practice-card">
+          <div class="practice-num">실습 3</div>
+          <div class="practice-emoji">🍳</div>
+          <h3>냉장고 털기 요리 레시피</h3>
+          <div class="practice-scenario">
+            <strong>상황:</strong> 집에 남은 재료로 혼자서 저녁을 만들어 먹어야 해요.
+          </div>
+          <div class="practice-template">
+            <div class="template-label">✏️ 빈칸을 채워서 프롬프트 만들기</div>
+            <div class="template-text">
+              "너는 [<span class="blank">역할</span>]이야. 지금 집에 [<span class="blank">재료 목록</span>]이 있어. 나는 요리를 [<span class="blank">잘함/못함</span>]이고 요리 시간은 [<span class="blank">시간</span>]이야. [<span class="blank">형식</span>]으로 레시피를 알려줘."
+            </div>
+          </div>
+          <div class="practice-sample">
+            <details>
+              <summary>💡 예시 답안 보기</summary>
+              <div class="sample-content">
+                "너는 친절한 요리 선생님이야. 지금 집에 계란 3개, 양파 반 개, 당면, 간장, 참기름이 있어. 나는 요리를 거의 못하는 중학생이고 요리 시간은 20분이야. 단계별로 번호를 붙여서 따라 하기 쉬운 레시피를 알려줘."
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 실습 4 -->
+        <div class="practice-card">
+          <div class="practice-num">실습 4</div>
+          <div class="practice-emoji">📚</div>
+          <h3>시험 공부 계획 세우기</h3>
+          <div class="practice-scenario">
+            <strong>상황:</strong> 2주 후 중간고사인데 공부 계획을 어떻게 세워야 할지 모르겠어요.
+          </div>
+          <div class="practice-template">
+            <div class="template-label">✏️ 빈칸을 채워서 프롬프트 만들기</div>
+            <div class="template-text">
+              "나는 [<span class="blank">학년</span>] 학생이야. [<span class="blank">기간</span>] 후에 시험이 있고, 시험 과목은 [<span class="blank">과목들</span>]이야. 하루에 [<span class="blank">시간</span>] 공부할 수 있어. [<span class="blank">형식</span>]으로 공부 계획표를 만들어줘."
+            </div>
+          </div>
+          <div class="practice-sample">
+            <details>
+              <summary>💡 예시 답안 보기</summary>
+              <div class="sample-content">
+                "나는 중학교 2학년 학생이야. 2주 후에 중간고사가 있고, 시험 과목은 수학, 영어, 과학, 국어야. 수학이 제일 약하고 영어도 자신 없어. 하루에 3시간 공부할 수 있어. 날짜별, 과목별로 무엇을 공부할지 표로 만들어줘. 시험 전날은 복습 시간으로 비워줘."
+              </div>
+            </details>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 주의사항 -->
+      <div class="caution-box">
+        <h3>⚠️ AI 사용할 때 꼭 기억하세요!</h3>
+        <div class="caution-grid">
+          <div class="caution-item">
+            <div class="caution-icon">🔍</div>
+            <h4>사실 확인하기</h4>
+            <p>AI가 틀린 정보를 자신 있게 말할 수 있어요. 중요한 정보는 꼭 다른 곳에서도 확인해요!</p>
+          </div>
+          <div class="caution-item">
+            <div class="caution-icon">🔒</div>
+            <h4>개인 정보 조심</h4>
+            <p>이름, 주소, 전화번호 같은 개인 정보는 AI에게 말하지 마세요!</p>
+          </div>
+          <div class="caution-item">
+            <div class="caution-icon">🧠</div>
+            <h4>내 생각도 중요해</h4>
+            <p>AI의 답을 그대로 쓰지 말고, 참고해서 내 생각과 합쳐서 사용해요!</p>
+          </div>
+          <div class="caution-item">
+            <div class="caution-icon">📝</div>
+            <h4>출처 요청하기</h4>
+            <p>중요한 정보라면 AI에게 "출처도 알려줘"라고 요청해서 검증해보세요!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 마무리 섹션 -->
+  <section class="outro-section">
+    <div class="container">
+      <div class="outro-content">
+        <div class="outro-emoji">🎉</div>
+        <h2>이제 AI와 대화할 준비 완료!</h2>
+        <p>오늘 배운 것을 기억하세요:</p>
+        <div class="outro-pills">
+          <span class="pill purple">🎭 페르소나 설정</span>
+          <span class="pill blue">📋 명확한 작업</span>
+          <span class="pill green">🗺️ 상황 설명</span>
+          <span class="pill orange">📐 형식 지정</span>
+          <span class="pill red">🔄 꼬리 질문</span>
+          <span class="pill teal">💡 예시 활용</span>
+        </div>
+        <p class="outro-final">프롬프트를 잘 쓰는 것이 곧 AI 활용 능력이에요!<br />계속 연습하면 누구보다 AI를 잘 활용할 수 있어요 💪</p>
+        <a href="#what-is-prompt" class="btn-primary large">처음부터 다시 읽기 ↑</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <p>🤖 프롬프트 엔지니어링 가이드북 | 중학생도 이해하는 AI 활용법</p>
+      <p class="footer-sub">참고 자료: GetUpNote (Gemini 활용 가이드, 프롬프트 작성법)</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
