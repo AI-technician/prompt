@@ -61,13 +61,6 @@ README.md           - 프로젝트 문서
 
 ---
 
-## 📚 참고 자료
-
-1. [GetUpNote - 제미나이 활용 5가지 기술](https://getupnote.com/share/notes/KZ0C6ILOO4eW8smmM4m7GvauUwE2/019d71bd-781c-72bf-9e37-8c74e22071c2)
-2. [GetUpNote - 프롬프트 4대 요소 & 6대 원칙](https://getupnote.com/share/notes/KZ0C6ILOO4eW8smmM4m7GvauUwE2/019d71bc-de1b-7417-88bc-f98077e7fad2)
-
----
-
 ## 🎨 디자인 특징
 
 - **주 색상**: 보라색 계열 (`#6c63ff`) + 밝은 그라디언트
